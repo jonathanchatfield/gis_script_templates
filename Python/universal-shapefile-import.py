@@ -13,6 +13,7 @@ INPUT_SHAPEFILE = r"[[FULL_PATH_TO_YOUR_SHAPEFILE.shp]]"
 
 # 2. DATABASE DETAILS
 # Your local PostGIS credentials.
+DB_Host = "[[localhost]]"
 DB_NAME = "[[YOUR_DATABASE_NAME]]"      # e.g. "jonathan"
 DB_USER = "[[YOUR_USERNAME]]"           # e.g. "jonathan"
 DB_PASSWORD = "[[YOUR_PASSWORD]]"       # Leave empty "" if using trusted local auth
@@ -40,8 +41,8 @@ COLUMNS_TO_KEEP = "[[LIST_OF_COLUMNS_TO_KEEP]]"
 
 def run_import():
     # Construct the connection string for ogr2ogr
-    connection_string = f"PG:dbname={DB_NAME} user={DB_USER} password={DB_PASSWORD}"
-
+    connection_string = f"PG:host={DB_Host} PG:dbname={DB_NAME} user={DB_USER} password={DB_PASSWORD}"
+# db_connection = "PG:host=localhost dbname=jonathan user=jonathan"
     # Build the command list
     # We use a list instead of a string to safely handle spaces in file paths
     cmd = [
